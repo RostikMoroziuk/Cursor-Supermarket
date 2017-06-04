@@ -1,5 +1,6 @@
 $navColor: #1f2637;
-$mainFont: "ProximaNova", serif;
+$mainFont: "ProximaNova",
+serif;
 $mainFontColor: #444c63;
 $secondSolor: #eef1f7;
 $btnColor: #337ab7;
@@ -12,6 +13,9 @@ $footerColor: #181e2c;
 body {
   background: radial-gradient(#9966cc, #333399);
   font-family: $mainFont;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .logo,
@@ -26,6 +30,20 @@ body {
 
 .main-header {
   color: $mainFontColor;
+}
+
+.products,
+.weigh-field,
+.buy-field {
+  background-color: white;
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  .row {
+    height: 100%;
+  }
 }
 
 .main-header .row,
@@ -56,6 +74,11 @@ body {
   .header {
     border-bottom: 5px solid #dadfea;
   }
+  .find,
+  .weigh,
+  .buy {
+    border-bottom: 10px solid #dadfea;
+  }
 }
 
 .find,
@@ -65,15 +88,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  border-bottom: 10px solid #dadfea;
 }
 
 .navigation {
   padding: 0;
-}
-
-.products {
-  background-color: white;
 }
 
 .product-cat {
@@ -94,11 +112,11 @@ body {
   }
   .price,
   .card-btn {
-    color: white;
     height: 36px;
     font-size: 20px;
   }
   .card-btn {
+    color: white;
     width: 100%;
     background-color: $btnColor;
     border: none;
