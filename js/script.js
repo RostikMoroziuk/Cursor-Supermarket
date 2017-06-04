@@ -35,40 +35,32 @@
     })
 
     //Add events for change tab
-    $(".navigation .find").click(function(e) {//Find tab
-      //hide products and bill
-      $(".weigh-field").addClass("hide");
-      $(".buy-field").addClass("hide");
-      //Show products
-      $(".products").removeClass("hide");
-      //Change active tab btn
-      $(".navigation .active").removeClass("active");
-      $(this).addClass("active");
+    $(".navigation .find").click(function (e) { //Find tab
+      //toggle field
+      toggleField.call(this, ".products");
     })
-    $(".navigation .weigh").click(function(e) {//Weigh tab
-      //hide products and bill
-      $(".products").addClass("hide");
-      $(".buy-field").addClass("hide");
-      //Show products
-      $(".weigh-field").removeClass("hide");
-      //Change active tab btn
-      $(".navigation .active").removeClass("active");
-      $(this).addClass("active");
+    $(".navigation .weigh").click(function (e) { //Weigh tab
+      //toggle field
+      toggleField.call(this, ".weigh-field");
     })
-    $(".navigation .buy").click(function(e) {//Buy tab
-      //hide products and bill
-      $(".products").addClass("hide");
-      $(".weigh-field").addClass("hide");
-      //Show products
-      $(".buy-field").removeClass("hide");
-      //Change active tab btn
-      $(".navigation .active").removeClass("active");
-      $(this).addClass("active");
+    $(".navigation .buy").click(function (e) { //Buy tab
+      //toggle field
+      toggleField.call(this, ".buy-field");
     })
 
+    function toggleField(activateField) {
+      //Change active field
+      $(".field[data-active=true]").addClass("hide").attr("data-active", "false");
+      $(activateField).removeClass("hide").attr("data-active", "true");
+
+      //change active navigation button
+      $(".navigation .active").removeClass("active");
+      $(this).addClass("active");
+    }
+
     //Add event for buy product
-    $(".card-btn").click(function(e) {
-      var card = $(this).parents(".card");//find what is it product
+    $(".card-btn").click(function (e) {
+      var card = $(this).parents(".card"); //find what is it product
       //create Product instance and add to bill
       var product = new Product();
       product.setImage(card.find("img").attr("src"));
@@ -81,52 +73,106 @@
 
   //class Product
   function Product() {
-    var name, weigh, price, img;//private
-    this.setName = function(n) {
+    var name, weight, price, img, priceToPay; //private
+    this.setName = function (n) {
       name = n;
     }
-    this.getName = function() {
+    this.getName = function () {
       return name;
     }
-    this.setWeigh = function(w) {
+    this.setWeight = function (w) {
       weigh = w;
     }
-    this.getWeigh = function() {
-      return weigh;
+    this.getWeight = function () {
+      return weight;
     }
-    this.setPrice = function(p) {
+    this.setPrice = function (p) {
       price = p;
     }
-    this.getPrice = function() {
+    this.getPrice = function () {
       return price;
     }
-    this.setImage = function(i) {
+    this.setImage = function (i) {
       img = i;
     }
-    this.getImage = function() {
+    this.getImage = function () {
       return img;
+    }
+    this.setPriceToPay = function (p) {
+      priceToPay = p;
+    }
+    this.getPriceToPay = function () {
+      return priceToPay;
     }
   }
 
   //class Bill
   function Bill() {
+    //private
     var products = [];
-    this.addProduct = function(product) {
+    var self = this;
+
+    function renderWeighField() {
+      var card = buildCard(self.getProducts().slice(-1)[0]);
+      //add card to field
+      $(".weigh-field").append(card);
+    }
+
+    function buildCard(product) {
+      var card = $("<article></article>").addClass("card");//biuld card
+
+      var img = $("<figure></figure>").addClass("image");//add image section
+      img.append($("<img>").attr("src", product.getImage()))//add image
+
+      var content = $("<div></div>").addClass("content");//content
+      content.append($("<h3></h3>").addClass("name").text(product.getName()));
+      var price = $("<div></div>").addClass("price");//price per kg and to pay
+      price.append($("<span></span>").addClass("label label-primary").text(product.getPrice() + " per kg"));
+      price.append($("<span></span>").addClass("label label-primary").attr("data-priceToPay", "")
+      .text(calcPrice(product.getPrice(), 10) //min weigh 10grams
+      + "$ to pay"));
+      content.append(price);
+      //weigh
+      content.append($("<input>").addClass("weight form-control").attr({
+        type: "number",
+        placeholder: "Weight product",
+        value: 10,
+        min: 10
+      }).after("grams"));
+      //buttons
+      var buttons = $("<div></div>").addClass("buttons");
+      buttons.append($("<button></button>").addClass("card-btn ok").text("Ok"));
+      buttons.append($("<button></button>").addClass("card-btn cancel").text("Cancel"));
+      content.append(buttons);
+
+      card.append(img, content);
+      return card;
+    }
+
+    function calcPrice(price, weigh) {
+      price = parseInt(price);
+      return (price * weigh/1000).toFixed(2);
+    }
+
+    //public
+    this.addProduct = function (product) {
       //if it is instanse of class Product 
-      if(product instanceof Product) {
+      if (product instanceof Product) {
         products.push(product);
         //Add badge to weigh
         $(".navigation .weigh .badge").text(products.length);
+        renderWeighField();
       } else {
         alert("It is not a product");
       }
     }
-    this.getProducts = function() {
+    this.getProducts = function () {
       return products;
     }
+
   }
 
-  Bill.prototype.makeBill = function() {
+  Bill.prototype.makeBill = function () {
 
   }
 

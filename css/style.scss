@@ -94,6 +94,14 @@ body {
   padding: 0;
 }
 
+.product-cat,
+.weigh-field,
+.buy-field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .product-cat {
   display: flex;
   flex-wrap: wrap;
@@ -114,12 +122,30 @@ body {
   .card-btn {
     height: 36px;
     font-size: 20px;
+    flex-wrap: wrap;
   }
   .card-btn {
     color: white;
     width: 100%;
     background-color: $btnColor;
     border: none;
+  }
+  .ok {
+    background-color: #5cb85c;
+  }
+  .cancel {
+    background-color: #d9534f;
+  }
+  .buttons {
+    display: flex;
+    .card-btn {
+      width: 50%;
+    }
+  }
+  .price {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
   }
 }
 
@@ -128,4 +154,9 @@ body {
   color: white;
   text-align: center;
   padding: 15px;
+}
+
+.weigh-field,
+.buy-field {
+  padding-top: 50px;
 }
