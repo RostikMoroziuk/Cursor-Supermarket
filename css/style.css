@@ -1,6 +1,7 @@
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  box-sizing: border-box; }
 
 body {
   background: radial-gradient(#9966cc, #333399);
@@ -34,6 +35,10 @@ body {
 .main-header .row,
 .main .row {
   display: flex; }
+
+.products-selection .nav {
+  display: flex;
+  align-items: center; }
 
 .logo {
   border-bottom: 10px solid rgba(24, 30, 44, 0.8); }

@@ -112,37 +112,52 @@
     var products = [];
     var self = this;
 
+    //Add cards to weigh tab
     function renderWeighField() {
       var card = buildCard(self.getProducts().slice(-1)[0]);
       //add card to field
       $(".weigh-field").append(card);
     }
 
+    //Add tabs to buy tab
+    function renderBuyField() {
+
+    }
+
     function buildCard(product) {
-      var card = $("<article></article>").addClass("card");//biuld card
+      var card = $("<article></article>").addClass("card"); //biuld card
 
-      var img = $("<figure></figure>").addClass("image");//add image section
-      img.append($("<img>").attr("src", product.getImage()))//add image
+      var img = $("<figure></figure>").addClass("image"); //add image section
+      img.append($("<img>").attr("src", product.getImage())) //add image
 
-      var content = $("<div></div>").addClass("content");//content
+      var content = $("<div></div>").addClass("content"); //content
       content.append($("<h3></h3>").addClass("name").text(product.getName()));
-      var price = $("<div></div>").addClass("price");//price per kg and to pay
+      var price = $("<div></div>").addClass("price"); //price per kg and to pay
       price.append($("<span></span>").addClass("label label-primary").text(product.getPrice() + " per kg"));
       price.append($("<span></span>").addClass("label label-primary").attr("data-priceToPay", "")
-      .text(calcPrice(product.getPrice(), 10) //min weigh 10grams
-      + "$ to pay"));
+        .text(calcPrice(product.getPrice(), 10) //min weigh 10grams
+          +
+          "$ to pay"));
       content.append(price);
       //weigh
       content.append($("<input>").addClass("weight form-control").attr({
-        type: "number",
-        placeholder: "Weight product",
-        value: 10,
-        min: 10
-      }).after("grams"));
+          type: "number",
+          placeholder: "Weight product",
+          value: 10,
+          min: 10
+        }).on("input", function () {
+          var priceToPay = calcPrice(product.getPrice(), this.value);
+          price.find(".label[data-priceToPay]").text(priceToPay + "$ to pay");
+        })
+        .after("grams"));
       //buttons
       var buttons = $("<div></div>").addClass("buttons");
-      buttons.append($("<button></button>").addClass("card-btn ok").text("Ok"));
-      buttons.append($("<button></button>").addClass("card-btn cancel").text("Cancel"));
+      buttons.append($("<button></button>").addClass("card-btn ok")
+        .on("click", renderBuyField).text("Ok"));
+      buttons.append($("<button></button>").addClass("card-btn cancel")
+        .on("click", function() {
+          cancelBuy.call(this, product);
+        }).text("Cancel"));
       content.append(buttons);
 
       card.append(img, content);
@@ -151,7 +166,14 @@
 
     function calcPrice(price, weigh) {
       price = parseInt(price);
-      return (price * weigh/1000).toFixed(2);
+      return (price * weigh / 1000).toFixed(2);
+    }
+
+    function cancelBuy(cancelProduct) {
+      //remove current card from html
+      $(this).closest(".card").remove();
+      //remove product from array
+      products.splice(products.indexOf(cancelProduct), 1);
     }
 
     //public

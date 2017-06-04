@@ -8,6 +8,7 @@ $footerColor: #181e2c;
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -49,6 +50,11 @@ body {
 .main-header .row,
 .main .row {
   display: flex;
+}
+
+.products-selection .nav {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
