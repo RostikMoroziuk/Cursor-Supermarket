@@ -1,6 +1,8 @@
 $navColor: #1f2637;
 $mainFont: "ProximaNova", serif;
 $mainFontColor: #444c63;
+$secondSolor: #eef1f7;
+$btnColor: #337ab7;
 * {
   margin: 0;
   padding: 0;
@@ -16,11 +18,17 @@ body {
   background-color: $navColor;
 }
 
+.header-section,
+.card {
+  background-color: $secondSolor;
+}
+
 .main-header {
   color: $mainFontColor;
 }
 
-.main-header .row {
+.main-header .row,
+.main .row {
   display: flex;
 }
 
@@ -33,7 +41,6 @@ body {
 }
 
 .header-section {
-  background-color: #eef1f7;
   align-self: stretch;
   padding: 0;
   .header,
@@ -62,4 +69,34 @@ body {
 
 .navigation {
   padding: 0;
+}
+
+.products {
+  background-color: white;
+}
+
+.product-cat {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.card {
+  width: 200px;
+  margin-bottom: 40px;
+  .content {
+    text-align: center;
+  }
+  .name {
+    padding: 15px 0;
+  }
+  .card-btn {
+    width: 100%;
+    height: 36px;
+    color: white;
+    background-color: $btnColor;
+    border: none;
+    font-size: 20px;
+  }
 }

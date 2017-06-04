@@ -10,10 +10,15 @@ body {
 .navigation {
   background-color: #1f2637; }
 
+.header-section,
+.card {
+  background-color: #eef1f7; }
+
 .main-header {
   color: #444c63; }
 
-.main-header .row {
+.main-header .row,
+.main .row {
   display: flex; }
 
 .logo {
@@ -23,7 +28,6 @@ body {
     height: 100%; }
 
 .header-section {
-  background-color: #eef1f7;
   align-self: stretch;
   padding: 0; }
   .header-section .header,
@@ -47,5 +51,29 @@ body {
 
 .navigation {
   padding: 0; }
+
+.products {
+  background-color: white; }
+
+.product-cat {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 50px; }
+
+.card {
+  width: 200px;
+  margin-bottom: 40px; }
+  .card .content {
+    text-align: center; }
+  .card .name {
+    padding: 15px 0; }
+  .card .card-btn {
+    width: 100%;
+    height: 36px;
+    color: white;
+    background-color: #337ab7;
+    border: none;
+    font-size: 20px; }
 
 /*# sourceMappingURL=style.css.map */
