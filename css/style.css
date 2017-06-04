@@ -76,4 +76,10 @@ body {
     border: none;
     font-size: 20px; }
 
+.footer .container {
+  background-color: #181e2c;
+  color: white;
+  text-align: center;
+  padding: 15px; }
+
 /*# sourceMappingURL=style.css.map */

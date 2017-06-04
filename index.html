@@ -33,9 +33,9 @@
             <div class="products-selection">
               <!--Selecting catagories-->
               <ul class="nav nav-pills">
-                <li role="presentation" class="active"><a href="#">Vegetables</a></li>
-                <li role="presentation"><a href="#">Fruits</a></li>
-                <li role="presentation"><a href="#">Other</a></li>
+                <li role="presentation" class="active fruits-tab"><a href="#" data-tab="fruits">Fruits</a></li>
+                <li role="presentation" class="vegetables-tab"><a href="#" data-tab="vegetables">Vegetables</a></li>
+                <li role="presentation" class="other-tab"><a href="#" data-tab="other">Other</a></li>
               </ul>
               <!--Searching product-->
               <form class="navbar-form navbar-right" role="search">
@@ -135,12 +135,11 @@
             </article>
           </div>
           <!--Vegetables category-->
-          <!--For optimization img will be added in js when user select section-->
-          <div class="vegetables hide product-cat">
+          <div class="vegetables hide product-cat" data-first-load="true">
             <!--Cabbage-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="cabbage">
+                <img src="img/cabbage.png" alt="cabbage">
               </figure>
               <div class="content">
                 <h3 class="name">Cabbage</h3>
@@ -150,7 +149,7 @@
             <!--Carrot-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="carrot">
+                <img src="img/carrot.png" alt="carrot">
               </figure>
               <div class="content">
                 <h3 class="name">Carrot</h3>
@@ -160,7 +159,7 @@
             <!--Cucumber-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="cucumber">
+                <img src="img/cucumber.png" alt="cucumber">
               </figure>
               <div class="content">
                 <h3 class="name">Cucumber</h3>
@@ -170,7 +169,7 @@
             <!--Onion-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="onion">
+                <img src="img/onion.png" alt="onion">
               </figure>
               <div class="content">
                 <h3 class="name">Onion</h3>
@@ -180,7 +179,7 @@
             <!--Tomato-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="tomato">
+                <img src="img/tomato.png" alt="tomato">
               </figure>
               <div class="content">
                 <h3 class="name">Tomato</h3>
@@ -194,7 +193,7 @@
             <!--Buckwheat-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="buckwhete">
+                <img src="img/buckwheat.png" alt="buckwhete">
               </figure>
               <div class="content">
                 <h3 class="name">Buckwheate</h3>
@@ -204,7 +203,7 @@
             <!--Cheese-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="cheese">
+                <img src="img/cheese.png" alt="cheese">
               </figure>
               <div class="content">
                 <h3 class="name">Cheese</h3>
@@ -214,7 +213,7 @@
             <!--Cookie-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="cookie">
+                <img src="img/cookie.png" alt="cookie">
               </figure>
               <div class="content">
                 <h3 class="name">Cookie</h3>
@@ -224,7 +223,7 @@
             <!--Flour-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="flour">
+                <img src="img/flour.png" alt="flour">
               </figure>
               <div class="content">
                 <h3 class="name">Flour</h3>
@@ -234,7 +233,7 @@
             <!--Sugar-->
             <article class="card">
               <figure class="image">
-                <img src="#" alt="sugar">
+                <img src="img/sugar.png" alt="sugar">
               </figure>
               <div class="content">
                 <h3 class="name">Sugar</h3>
@@ -250,10 +249,13 @@
 
   <!--Footer section-->
   <footer class="footer">
-    &copy;Copyright 2017 <a href="https://www.linkedin.com/in/rostyslav-moroziuk/">Rostyslav Moroziuk</a>
+    <div class="container">
+      &copy;Copyright 2017 <a href="https://www.linkedin.com/in/rostyslav-moroziuk/">Rostyslav Moroziuk</a>
+    </div>
   </footer>
   <!--End footer-->
 
+  <script src="js/script.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 

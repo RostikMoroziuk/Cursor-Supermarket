@@ -3,6 +3,7 @@ $mainFont: "ProximaNova", serif;
 $mainFontColor: #444c63;
 $secondSolor: #eef1f7;
 $btnColor: #337ab7;
+$footerColor: #181e2c;
 * {
   margin: 0;
   padding: 0;
@@ -99,4 +100,11 @@ body {
     border: none;
     font-size: 20px;
   }
+}
+
+.footer .container {
+  background-color: $footerColor;
+  color: white;
+  text-align: center;
+  padding: 15px;
 }
