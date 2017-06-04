@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--Icons-->
+  <script src="https://use.fontawesome.com/d43ae5a69d.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
   <title>Supermarket</title>
 </head>
 
@@ -13,40 +18,49 @@
   <!--Header section-->
   <header class="main-header">
     <div class="container">
-      <div class="row">
+      <div class="row ">
         <!--Logo-->
-        <section class="logo col-s2">
-
+        <section class="logo col-xs-2">
+          <img src="img/logo.svg" alt="logo">
         </section>
         <!--Header for finding-->
-        <section class="header-section col-s10 find active">
-          <h2 class="header">Find Available Food</h2>
-          <div class="products-selection">
-            <!--Selecting catagories-->
-            <ul class="nav nav-pills">
-              <li role="presentation" class="active"><a href="#">Vegetables</a></li>
-              <li role="presentation"><a href="#">Fruits</a></li>
-              <li role="presentation"><a href="#">Other</a></li>
-            </ul>
-            <!--Searching product-->
-            <form class="navbar-form navbar-right" role="search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter product">
-                <span class="input-group-btn">
-                  <span class="glyphicon glyphicon-search"></span>
+        <div class="header-section col-xs-10">
+          <section class="find active">
+            <div class="header">
+              <h2>Find Available Food</h2>
+            </div>
+
+            <div class="products-selection">
+              <!--Selecting catagories-->
+              <ul class="nav nav-pills">
+                <li role="presentation" class="active"><a href="#">Vegetables</a></li>
+                <li role="presentation"><a href="#">Fruits</a></li>
+                <li role="presentation"><a href="#">Other</a></li>
+              </ul>
+              <!--Searching product-->
+              <form class="navbar-form navbar-right" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter product">
+                  <span class="input-group-btn">
+                  <button class="btn search" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </span>
-              </div>
-            </form>
-          </div>
-        </section>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
         <!--Header for weigh-->
-        <section class="header-section col-s10 weigh hide">
-          <h2 class="header">Weigh products</h2>
-        </section>
+        <div class="header-section col-xs-10  hide">
+          <section class="weigh">
+            <h2 class="header">Weigh products</h2>
+          </section>
+        </div>
         <!--Header for buy-->
-        <section class="header-section col-s10 buy hide">
-          <h2 class="header">Buy products</h2>
-        </section>
+        <div class="header-section col-xs-10 hide">
+          <section class="buy">
+            <h2 class="header">Buy products</h2>
+          </section>
+        </div>
       </div>
     </div>
   </header>
@@ -57,15 +71,15 @@
     <div class="container">
       <div class="row">
         <!--Left side navigation menu-->
-        <nav class="navigation col-s2">
-          <ul class="nav nav-pills">
+        <nav class="navigation col-xs-2">
+          <ul class="nav nav-pills nav-stacked">
             <li role="presentation" class="active"><a href="#">Find</a></li>
             <li role="presentation"><a href="#">Weigh</a></li>
             <li role="presentation"><a href="#">Buy</a></li>
           </ul>
         </nav>
         <!--Table with products grouped by categories-->
-        <section class="products col-s10">
+        <section class="products col-xs-10">
           <!--Fruits category-->
           <div class="fruits active product-cat">
             <!--Cards with product-->
