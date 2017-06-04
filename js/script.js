@@ -33,6 +33,17 @@
       $(".products-selection li.active").removeClass("active");
       $(".products-selection .other-tab").addClass("active");
     })
+
+    //Add event for buy product
+    $(".card-btn").click(function(e) {
+      var card = $(this).parrents("card");//find what is it product
+
+    })
+  }
+
+  //class Product
+  function Product() {
+    var name, weigh, price;
   }
 
   addEvents();
