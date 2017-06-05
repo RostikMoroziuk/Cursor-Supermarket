@@ -38,15 +38,23 @@
     $(".navigation .find").click(function (e) { //Find tab
       //toggle field
       toggleField.call(this, ".products");
+      changeHeaderSection.call(this, "find");
     })
     $(".navigation .weigh").click(function (e) { //Weigh tab
       //toggle field
       toggleField.call(this, ".weigh-field");
+      changeHeaderSection.call(this, "weigh");
     })
     $(".navigation .buy").click(function (e) { //Buy tab
       //toggle field
       toggleField.call(this, ".bill-field");
+      changeHeaderSection.call(this, "buy");
     })
+
+    function changeHeaderSection(activateHeader) {
+      $(".main-header [data-active=true]").addClass("hide").attr("data-active", "false");
+      $(".header-section[data-header=" + activateHeader + "]").removeClass("hide").attr("data-active", "true");
+    }
 
     function toggleField(activateField) {
       //Change active field
