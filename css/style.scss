@@ -25,7 +25,8 @@ body {
 }
 
 .header-section,
-.card {
+.card,
+.bill {
   background-color: $secondSolor;
 }
 
@@ -35,7 +36,7 @@ body {
 
 .products,
 .weigh-field,
-.buy-field {
+.bill-field {
   background-color: white;
 }
 
@@ -126,7 +127,7 @@ body {
   }
   .price,
   .card-btn {
-    height: 36px;
+    min-height: 36px;
     font-size: 20px;
     flex-wrap: wrap;
   }
@@ -165,4 +166,17 @@ body {
 .weigh-field,
 .buy-field {
   padding-top: 50px;
+}
+
+.bill-field {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0;
+  .bill {
+    width: 20%;
+    height: 100%;
+  }
+  .buy-field {
+    width: 75%;
+  }
 }

@@ -15,7 +15,8 @@ body {
   background-color: #1f2637; }
 
 .header-section,
-.card {
+.card,
+.bill {
   background-color: #eef1f7; }
 
 .main-header {
@@ -23,7 +24,7 @@ body {
 
 .products,
 .weigh-field,
-.buy-field {
+.bill-field {
   background-color: white; }
 
 .main {
@@ -96,7 +97,7 @@ body {
     padding: 15px 0; }
   .card .price,
   .card .card-btn {
-    height: 36px;
+    min-height: 36px;
     font-size: 20px;
     flex-wrap: wrap; }
   .card .card-btn {
@@ -126,5 +127,15 @@ body {
 .weigh-field,
 .buy-field {
   padding-top: 50px; }
+
+.bill-field {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0; }
+  .bill-field .bill {
+    width: 20%;
+    height: 100%; }
+  .bill-field .buy-field {
+    width: 75%; }
 
 /*# sourceMappingURL=style.css.map */
