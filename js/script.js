@@ -50,6 +50,30 @@
       toggleField.call(this, ".bill-field");
       changeHeaderSection.call(this, "buy");
     })
+    //Find card by name in input type
+    $(".find-card").on("input", showQueryCard);
+
+    //Match card name and user search query
+    function showQueryCard() {
+      var val = $(this).val().toLowerCase();//search query
+      if(!val.length) { //if empry - show all 
+        $(".card.hide").removeClass("hide");
+        return;
+      }
+      //Create search pattern
+      var query = new RegExp(val);
+      
+      var cardsOnActiveField = $(".product-cat.active").children();//find all active card
+      cardsOnActiveField.each(function(i, el) {
+        var element = $(el);
+        //if card name !has query - hide it
+        if(!query.test(element.find(".name").text().toLowerCase())) {
+          element.addClass("hide");
+        } else {
+          element.removeClass("hide");
+        }
+      })
+    }
 
     function changeHeaderSection(activateHeader) {
       $(".main-header [data-active=true]").addClass("hide").attr("data-active", "false");
