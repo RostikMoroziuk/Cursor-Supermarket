@@ -110,6 +110,7 @@
   function Bill() {
     //private
     var products = [];
+    var priceToPay = $(".bill [data-price]");
     var self = this;
 
     //Add cards to weigh tab
@@ -151,7 +152,7 @@
       var price = $("<div></div>").addClass("price"); //price per kg and to pay
       price.append($("<span></span>").addClass("label label-primary").text(product.getPrice() + " per kg"));
       price.append($("<span></span>").addClass("label label-primary").attr("data-priceToPay", "")
-        .text(calcPrice(product.getPrice(), 10) //min weigh 10grams
+        .text(calcPrice(product, 10) //min weigh 10grams
           +
           "$ to pay"));
       content.append(price);
@@ -170,7 +171,7 @@
           alert("Range 10-100000");
           this.value = 10;
         } else {
-          var priceToPay = calcPrice(product.getPrice(), this.value);
+          var priceToPay = calcPrice(product, this.value);
           price.find(".label[data-priceToPay]").text(priceToPay + "$ to pay");
         }
       }));
@@ -190,9 +191,12 @@
       return card;
     }
 
-    function calcPrice(price, weigh) {
-      price = parseInt(price);
-      return (price * weigh / 1000).toFixed(2);
+    function calcPrice(product, weigh) {
+      var price = parseInt(product.getPrice());
+      //calc price to pay
+      price = (price * weigh / 1000).toFixed(2);
+      product.setPriceToPay(price); //set price to pay
+      return price;
     }
 
     function cancelBuy(cancelProduct) {//event for both cancel: on buy field and weigh field
@@ -230,11 +234,30 @@
     this.getProducts = function () {
       return products;
     }
+    this.addPriceToPay = function (price) {
+      console.log(parseFloat(priceToPay.text()));
+      priceToPay.text((parseFloat(priceToPay.text()) + +price).toFixed(2)+"$ total sum");
+    }
+    
+    //protected
+    this._billField = $(".bill .list");
+    this._makeRow = function(product) {
+      var row = $("<li></li>");
+      row.text(product.getName().slice(0, 10) + " -- "
+      + product.getPrice() + " -- "
+      + product.getPriceToPay());
+      return row;
+    }
 
   }
 
   Bill.prototype.makeBill = function (product) {
+    //prepend new row
+    var row = this._makeRow(product);
+    this._billField.prepend(row);
 
+    //change total sum
+    this.addPriceToPay(product.getPriceToPay());
   }
 
   var bill = new Bill;
